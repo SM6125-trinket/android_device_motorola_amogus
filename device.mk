@@ -43,6 +43,22 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Audio
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.audio.feature.afe_proxy.enable=true \
+    vendor.audio.feature.compress_meta_data.enable=true \
+    vendor.audio.feature.custom_stereo.enable=true \
+    vendor.audio.feature.fluence.enable=true \
+    vendor.audio.feature.hfp.enable=true \
+    vendor.audio.feature.incall_music.enable=true \
+    vendor.audio.feature.kpi_optimize.enable=true \
+    vendor.audio.feature.multi_voice_session.enable=true \
+    vendor.audio.feature.ras.enable=true \
+    vendor.audio.feature.snd_mon.enable=true \
+    vendor.audio.feature.src_trkn.enable=true \
+    vendor.audio.feature.ssrec.enable=true \
+    vendor.voice.path.for.pcm.voip=true
+
 # Camera
 TARGET_NEEDS_RAW10_BUFFER_FIX := true
 TARGET_USES_64BIT_CAMERA := false
@@ -59,7 +75,7 @@ PRODUCT_PACKAGES += \
     libtime_genoff
 
 # Device Characteristics
-DEVICE_CHARACTERISTICS += fm erofs
+DEVICE_CHARACTERISTICS += erofs
 
 # Device Folders
 PRODUCT_PACKAGES += \
