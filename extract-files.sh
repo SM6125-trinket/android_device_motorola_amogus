@@ -83,6 +83,11 @@ function blob_fixup() {
         patchelf --add-needed libgbp_shim.so "${2}"
         ;;
 
+    # sensors Looper ABI shim (Android 11 -> 14)
+    vendor/lib/sensors.moto.so|vendor/lib64/sensors.moto.so)
+        patchelf --add-needed libsensors_shim.so "${2}"
+        ;;
+
     system_ext/etc/permissions/moto-telephony.xml)
         sed -i "s#/system/#/system_ext/#" "${2}"
         ;;

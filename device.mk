@@ -54,7 +54,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libcamera_shim \
     libgbp_shim \
-    libgui_vendor
+    libgui_vendor \
+    libsensors_shim \
+    libtime_genoff
 
 # Device Characteristics
 DEVICE_CHARACTERISTICS += fm erofs
