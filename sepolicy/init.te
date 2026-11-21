@@ -1,0 +1,2 @@
+# Bind mount variant camera/sensor configs
+allow init vendor_configs_file:{ dir file } mounton;

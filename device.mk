@@ -79,10 +79,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0.vendor
 
-# Init
-PRODUCT_PACKAGES += \
-    init.amogus.sh
-
 # Model
 PRODUCT_MODEL := moto g(8) family
 
@@ -133,6 +129,16 @@ TARGET_VENDOR_PROP += $(PLATFORM_COMMON_PATH)/props/vendor.prop
 # QCOM Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcom.bluetooth.soc=cherokee
+
+# Sensors
+# Complete config-sofiar with shared base configs from config-sofia,
+# keeping sofiar's own overrides and omitting sofia-specific vcnl36866 configs.
+SOFIA_SENSORS_DIR := vendor/motorola/amogus/proprietary/vendor/etc/sensors/config-sofia
+SOFIAR_SENSORS_DIR := vendor/motorola/amogus/proprietary/vendor/etc/sensors/config-sofiar
+SOFIAR_SENSOR_EXCLUDES := $(notdir $(wildcard $(SOFIAR_SENSORS_DIR)/*.json)) vcnl36866_0.json nicobar_vcnl36866_0.json
+PRODUCT_COPY_FILES += \
+    $(foreach file,$(filter-out $(SOFIAR_SENSOR_EXCLUDES),$(notdir $(wildcard $(SOFIA_SENSORS_DIR)/*.json))),\
+        $(SOFIA_SENSORS_DIR)/$(file):$(TARGET_COPY_OUT_VENDOR)/etc/sensors/config-sofiar/$(file))
 
 # Recovery
 ifneq ($(TARGET_IS_AMOGUS_DOHA),true)
