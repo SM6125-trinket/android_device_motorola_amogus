@@ -16,6 +16,7 @@ DEVICE_PATH := device/motorola/amogus
 
 # AVB
 BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 # Arch
 TARGET_ARCH_VARIANT := armv8-a
@@ -26,7 +27,12 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=4e00000.dwc3
+BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=4e00000.dwc3 printk.devkmsg=on
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/modules.blocklist
+TARGET_MODULE_ALIASES += wlan.ko:qca_cld3_wlan.ko
+ifneq ($(TARGET_DEVICE),amogus_doha)
+  BOARD_VENDOR_KERNEL_MODULES := $(filter-out %/focaltech_0flash_mmi_doha.ko,$(BOARD_VENDOR_KERNEL_MODULES))
+endif
 
 # SELinux
 BOARD_USE_ENFORCING_SELINUX := true

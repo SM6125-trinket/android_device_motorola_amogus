@@ -1,0 +1,6 @@
+# Kernel modules deferred to later init stages:
+# - qca_cld3_wlan: loaded asynchronously in init.target.rc (on boot)
+# - fpc1020_mmi / ets_fps_mmi: conditionally loaded in init.oem.fingerprint2.sh (post-fs-data)
+blocklist ets_fps_mmi
+blocklist fpc1020_mmi
+blocklist qca_cld3_wlan
