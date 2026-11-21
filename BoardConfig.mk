@@ -30,6 +30,8 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=4e00000.dwc3 printk.devkmsg=on
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/modules.blocklist
 TARGET_MODULE_ALIASES += wlan.ko:qca_cld3_wlan.ko
+RECOVERY_KERNEL_MODULES += qpnp-smbcharger-mmi.ko
+BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD += qpnp-smbcharger-mmi.ko
 ifneq ($(TARGET_DEVICE),amogus_doha)
   BOARD_VENDOR_KERNEL_MODULES := $(filter-out %/focaltech_0flash_mmi_doha.ko,$(BOARD_VENDOR_KERNEL_MODULES))
 endif
