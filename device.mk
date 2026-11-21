@@ -59,6 +59,10 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.audio.feature.ssrec.enable=true \
     vendor.voice.path.for.pcm.voip=true
 
+# Charging Control
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+
 # Camera
 TARGET_NEEDS_RAW10_BUFFER_FIX := true
 TARGET_USES_64BIT_CAMERA := false

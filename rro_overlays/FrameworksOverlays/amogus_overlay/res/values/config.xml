@@ -119,4 +119,10 @@
          waiting on disk I/O or lowmemorykiller.  Directly added to the default value chosen by
          ActivityManager based on screen size. -->
     <integer name="config_extraFreeKbytesAdjust">131072</integer>
+
+    <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
+    <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/power_supply/battery/charge_rate</string>
+
+    <!-- Expected value from fast charging status file -->
+    <string name="config_oemFastChargerStatusValue" translatable="false">Turbo</string>
 </resources>
